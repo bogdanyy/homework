@@ -22,7 +22,17 @@ class Word():
             self.result={}
 
     def create_response(self):
-        dictionary=f"Введенное слово {self.result['text']} переведено {self.result['text','pos',{syn['text','pos']}]}"
+        dictionary=f"""Введенное слово - {self.result["def"][0]["text"]},
+        часть речи - {self.result["def"][0]["pos"]}, род -
+        {self.result["def"][0]["gen"]}, о/н - {self.result["def"][0]["anm"]}.
+        \n Результат: перевод - {self.result["def"][0]["tr"][0]["text"]}, часть речи -
+        {self.result["def"][0]["tr"][0]["pos"]}. \n Синонимы:
+        {self.result["def"][0]["tr"][0]["syn"][0]["text"]}, часть речи -
+        {self.result["def"][0]["tr"][0]["syn"][0]["pos"]}
+        {self.result["def"][0]["tr"][0]["syn"][1]["text"]}, часть речи -
+        {self.result["def"][0]["tr"][0]["syn"][1]["pos"]}
+        \nЗначение:1 - {self.result["def"][0]["tr"][0]["mean"][0]["text"]}, 2 -
+        {self.result["def"][0]["tr"][0]["mean"][1]["text"]}"""
         print(dictionary)
 
 if __name__ == "__main__":

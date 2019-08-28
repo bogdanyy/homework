@@ -28,50 +28,41 @@ def executor(url, index):
     result=requests.get(url)
     print("finish",index)
 
-    def create_response(self):
-        dictionary_1=f"""Введенное слово - {self.result["def"][0]["text"]},
-        часть речи - {self.result["def"][0]["pos"]}, род -
-        {self.result["def"][0]["gen"]}, о/н - {self.result["def"][0]["anm"]}.
-        \n Результат: перевод - {self.result["def"][0]["tr"][0]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["pos"]}. \n Синонимы:
-        {self.result["def"][0]["tr"][0]["syn"][0]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["syn"][0]["pos"]}
-        {self.result["def"][0]["tr"][0]["syn"][1]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["syn"][1]["pos"]}
-        \nЗначение:1 - {self.result["def"][0]["tr"][0]["mean"][0]["text"]}, 2 -
-        {self.result["def"][0]["tr"][0]["mean"][1]["text"]}"""
-        print(dictionary_1)
-        dictionary_2=f"""Введенное слово - {self.result["def"][0]["text"]},
-        часть речи - {self.result["def"][0]["pos"]}.
-        \n Результат: перевод - {self.result["def"][0]["tr"][0]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["pos"]}. \n Синонимы:
-        {self.result["def"][0]["tr"][0]["syn"][0]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["syn"][0]["pos"]}
-        {self.result["def"][0]["tr"][0]["syn"][1]["text"]}, часть речи -
-        {self.result["def"][0]["tr"][0]["syn"][1]["pos"]}
-        \nЗначение:1 - {self.result["def"][0]["tr"][0]["mean"][0]["text"]}, 2 -
-        {self.result["def"][0]["tr"][0]["mean"][1]["text"]}"""
-        print(dictionary_2)
+    #def create_response(self):
+    #    dictionary_1=f"""Введенное слово - {self.result["def"][0]["text"]},
+    #    часть речи - {self.result["def"][0]["pos"]}, род -
+    #    {self.result["def"][0]["gen"]}, о/н - {self.result["def"][0]["anm"]}.
+    #    \n Результат: перевод - {self.result["def"][0]["tr"][0]["text"]}, часть речи -
+    #    {self.result["def"][0]["tr"][0]["pos"]}. \n Синонимы:
+    #    {self.result["def"][0]["tr"][0]["syn"][0]["text"]}, часть речи -
+    #    {self.result["def"][0]["tr"][0]["syn"][0]["pos"]}
+    #    {self.result["def"][0]["tr"][0]["syn"][1]["text"]}, часть речи -
+    #    {self.result["def"][0]["tr"][0]["syn"][1]["pos"]}
+    #    \nЗначение:1 - {self.result["def"][0]["tr"][0]["mean"][0]["text"]}, 2 -
+    #    {self.result["def"][0]["tr"][0]["mean"][1]["text"]}"""
+
+
 
 if __name__ == "__main__":
     #obj.get_data()
     #print(obj.result)
-    obj.create_response()
+    #obj.create_response()
     obj1=Word(lang="ru-en", text="вечер")
     obj2=Word(lang="en-ru", text="sky")
-    bj3=Word(lang="en-ru", text="room")
-    url1=obj1.url
-    url2=obj2.url
-    url3=obj3.url
+    obj3=Word(lang="en-ru", text="room")
+    url1 = obj1.url,
+    url2 = obj2.url,
+    url3 = obj3.url
     urls =[
-        "url1",
-        #url2",
-        "url3"
+        url1,
+        url2,
+        url3 
         ]
     start = datetime.now()
-    workers = [Thread(target=executor, args=(url1,index)) for index in range(len(urls))]
-    workers = [Thread(target=executor, args=(url2,index)) for index in range(len(urls))]
-    workers = [Thread(target=executor, args=(url1,index)) for index in range(len(urls))]
+    workers = [Thread(target=executor, args=(url,index)) for url,index in enumerate(urls,1)]
+    #workers = [Thread(target=executor, args=(url1,index)) for index in range(len(urls))]
+    #workers = [Thread(target=executor, args=(url2,index)) for index in range(len(urls))]
+    #workers = [Thread(target=executor, args=(url3,index)) for index in range(len(urls))]
     for worker in workers:
        worker.start()
     for worker in workers:

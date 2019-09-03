@@ -31,15 +31,12 @@ def executor(url, index):
     print("start",index)
     result=requests.get(url)
     print("finish",index)
-
-def send_data(url):
     while True:
         print (datetime.now())
         time.sleep(60)
-        print(url)
 
 
-            #def create_response(self):
+    #def create_response(self):
     #    dictionary_1=f"""Введенное слово - {self.result["def"][0]["text"]},
     #    часть речи - {self.result["def"][0]["pos"]}, род -
     #    {self.result["def"][0]["gen"]}, о/н - {self.result["def"][0]["anm"]}.
@@ -81,4 +78,3 @@ if __name__ == "__main__":
     print(obj1.url)
     print(obj2.url)
     print(obj3.url)
-    send_data(urls)
